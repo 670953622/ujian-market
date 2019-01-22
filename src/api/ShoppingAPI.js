@@ -2,8 +2,8 @@ import http_axios from '../utils/http/axios'
 import http_wx from '../utils/http/wxhttp'
 const http = mpvue_Mode === 'WX' ? http_wx : http_axios;
 
-// let BaseHost = "https://market.ujianchina.net/";
-let BaseHost = "http://192.168.0.119:811/";
+let BaseHost = "https://market.ujianchina.net/";
+// let BaseHost = "http://192.168.0.119:811/";
 
 
 export default {
@@ -111,6 +111,16 @@ export default {
     Order_ApplyCancel: param => {
         return http.post(BaseHost + "api/Order/ApplyCancel", param)
     },
-    
-    
+    //获取订单评论列表
+    OrderComment_GetList: param => {
+        return http.get(BaseHost + "api/OrderComment/GetList", param)
+    },
+    //添加订单评论
+    OrderComment_GetList: param => {
+        return http.post(BaseHost + "api/OrderComment/Add", param)
+    },
+    //删除订单评论
+    OrderComment_GetList: CommentGoodsId => {
+        return http.post(BaseHost + `api/OrderComment/DeleteGoodsComment?CommentGoodsId=${CommentGoodsId}`)
+    },
 }
